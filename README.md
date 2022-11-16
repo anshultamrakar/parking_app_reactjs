@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+##Functional Requirements:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1) To start with, the user will be asked to enter the number of spaces in the parking lot. The app then proceeds to draw the parking spaces available in the parking lot - each parking space will show a unique parking space number on it.
 
-## Available Scripts
+2) The user should be able to add a new car registration and parking time when a car arrives.
 
-In the project directory, you can run:
+3) The app should allocate a random space if available.
 
-### `yarn start`
+4) If no lot is empty then show a toast message that Parking is full.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5) On exit of the car, The user should be able to press the parking space to open a new page. The modal should display the calculated parking charges and also a button to deallocate the parking space once payment has been taken. The new page should have a back button in case the user changes their mind. Parking charges are calculated as below:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+6) First 2 hours $10
 
-### `yarn test`
+7) $10 is charged for every consecutive hour then after.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+8) When the payment taken button is clicked, Make a post request to https://httpstat.us/200 with the body:
 
-### `yarn build`
+  {
+    "car-registration": <car_registration_string>,
+    "charge": <charge_amount_number>
+  }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  Example:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  {
+    "car-registration": "TU68 0888",
+    "charge": 20
+  }
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Technical Requirements:
 
-### `yarn eject`
+1) Written in and typed in TypeScript.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2) Use a state management library (Ex: Redux, React.Context)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3) Styled and formatted appropriately so that the application is easy to use. Use the https://material-ui.com component library for your components.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+4) Write JEST tests that provide 50% or more test coverage of your components.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+5) No payment gateway is required - The button to indicate 'Payment Taken' is enough
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+6) Good coding practices are required - Your code quality will be reviewed.
